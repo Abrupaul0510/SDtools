@@ -249,3 +249,43 @@ def getmore_details_request(recordID):
     res = response.json()
 
     return res
+
+def tasklist(orderIDs):
+
+    headers = {
+        'Accept': 'application/json, text/javascript, */*; q=0.01',
+        'Accept-Language': 'en-US,en;q=0.9',
+        'Connection': 'keep-alive',
+        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+        'Origin': 'https://portal.dito.ph',
+        'Referer': 'https://portal.dito.ph/portal-web/',
+        'Sec-Fetch-Dest': 'empty',
+        'Sec-Fetch-Mode': 'cors',
+        'Sec-Fetch-Site': 'same-origin',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36',
+        'X-CSRF-TOKEN': '226cc00c-09ee-4732-9815-9ae2c30414b2',
+        'X-Requested-With': 'XMLHttpRequest',
+        'sec-ch-ua': '"Chromium";v="112", "Google Chrome";v="112", "Not:A-Brand";v="99"',
+        'sec-ch-ua-mobile': '?0',
+        'sec-ch-ua-platform': '"Windows"',
+    }
+
+    data = {
+        'serviceName': 'ptoWorkOrderServiceBean',
+        'methodName': 'queryWoWorkOrderList',
+        'operator': 'Abrugar Paul Bryan',
+        'moduleName': 'taskflow',
+        'param': '{"serviceName":"ptoWorkOrderServiceBean","method":"queryWoWorkOrderList","p0":"{\\"orderId\\":'+orderIDs+'}"}',
+    }
+
+    response = requests.post(
+        'https://portal.dito.ph/oss-eoms-taskflow/executeService/execute.do',
+        headers=headers,
+        data=data,
+    )
+
+    rawdata = response.json()
+
+    resultdata = rawdata
+
+    return resultdata['resultData']

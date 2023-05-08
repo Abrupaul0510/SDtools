@@ -10,6 +10,7 @@ import config
 
 gsheet_path = config.gsheet_token_path
 bothost = config.bothost
+rawdata = config.excel_path
 
 cfile = gsheet_path
 scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
@@ -107,10 +108,12 @@ def hourlymain():
     print(paul_art,"v2\n")
 
     print("Extracing data from excel...")
-    df = pd.read_excel('rawdata.xlsx', sheet_name="2023 Ticket Tracker")
+    df = pd.read_excel(rawdata, sheet_name="2023 Ticket Tracker")
+
+    print(df)
     dataall = df['Case No.'].notnull().sum()
 
-
+    print(dataall)
     data = df[df['Status'] == 'Second-line handle']
     dataclosed = df[df['Status'] == 'Closed']
     dataconfirm = df[df['Status'] == 'Pending-customer confirm']

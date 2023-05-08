@@ -3,6 +3,7 @@ from sdtools.dohourly import hourlymain
 from sdtools.run import startMonitoring
 from sdtools.opentix import opentix
 from sdtools.closedtix import pen_ac22
+from sdtools.gethandledtix import handledtix
 import pyfiglet
 
 
@@ -13,7 +14,8 @@ print("1. Hourly")
 print("2. Check Closed Tickets")
 print("3. Owned Ticket Status")
 print("4. Run Ticket Monitor")
-choice = input("Enter your choice (1/2/3/4): ")
+print("5. My Handled Tickets")
+choice = input("Enter your choice (1/2/3/4/5): ")
 
 
 if choice == '1':
@@ -24,5 +26,7 @@ elif choice == '3':
     opentix()
 elif choice == '4':
     startMonitoring()
+elif choice == '5':
+    handledtix()    
 else:
     print("Invalid choice. Exiting...")

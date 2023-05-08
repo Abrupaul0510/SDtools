@@ -1,6 +1,6 @@
 
-# OFM Ticket Notifier
-This script retrieves the current tickets in OFM and sends Dingtalk notifications to all available owners and agents. It also logs the ticket information into a Google Sheet.
+# SD Tools
+Scripts for SD-Agent
 
 ## Installation
 
@@ -20,20 +20,19 @@ pip install -r requirements.txt
 Here are the configuration needed:
 
 ```bash
-#SD name in OFM
-bothost = '' 
+bothost = ''
 
-#StaffID
+log_sheet = ''
+
 sd_id = ''
 
-#dingtalk key token
-dingtalk_token = ''
+excel_path = ""
 
-#google sheeet service account tken
-gsheet_token_path = ''
+dingtalk_token = ""
 
-#dingtalk key token 2
-dt_token_for_wfc = ''
+gsheet_token_path = ""
+
+dt_token_for_wfc = ""
 ```
 
 5. To run the SD Tools, simply execute the tools.py file:
@@ -51,7 +50,8 @@ Please choose script to run:
 2. Check Closed Tickets
 3. Owned Ticket Status
 4. Run Ticket Monitor
-Enter your choice (1/2/3/4): 4
+5. My Handled Tickets
+Enter your choice (1/2/3/4/5):
 ```
 
 If you encounter any issues, you can contact me at Dingtalk. Thanks

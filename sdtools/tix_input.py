@@ -75,17 +75,17 @@ def addtix(tix):
                             '',
                             '']
 
-                sheet.append_row(new_row)
-
-                new_exist = ['SD-NAME',
+                new_exist = [tix,
                             'OFM Ticket Handling',
                             formatted_date,
                             '',
                             '',
-                            tix,
+                            '',
                             tixtitle,
                             '']
-            
+                
+
+                sheet.append_row(new_row)
                 sheet2.append_row(new_exist)
                 
 
