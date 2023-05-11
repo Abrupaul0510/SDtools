@@ -51,7 +51,8 @@ Please choose script to run:
 3. Owned Ticket Status
 4. Run Ticket Monitor
 5. My Handled Tickets
-Enter your choice (1/2/3/4/5):
+6. SDs Work Order
+Enter your choice (1/2/3/4/5/6):
 ```
 
 If you encounter any issues, you can contact me at Dingtalk. Thanks
