@@ -308,7 +308,7 @@ def getallworkorder():
         df = pd.DataFrame(allhandledtix)
         today = datetime.date.today()
 
-        df.to_excel(work_order_path+'ITSD-workorder'+str(today)+'.xlsx', index=False)
+        df.to_excel(work_order_path+'ITSD-workorder'+str(reqdate)+'.xlsx', index=False)
         print("Data Extracted, Please check root folder.")
 
     except ValueError:

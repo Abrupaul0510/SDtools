@@ -4,6 +4,7 @@ from dateutil import parser
 import pprint
 import pandas as pd
 import pyfiglet
+import config
 from requestcalls.getdata import get_tix_details,get_closed
 
 
@@ -35,10 +36,12 @@ def checkticket(tixnumclean,dataobj):
 
 
 def pen_ac22():
+
+    rawdata = config.excel_path
     paul_art = pyfiglet.figlet_format("Closed Tickets")
     print(paul_art)
     print("Checking for closed tickets")
-    df = pd.read_excel('rawdata.xlsx', sheet_name="2023 Ticket Tracker")
+    df = pd.read_excel(rawdata, sheet_name="2023 Ticket Tracker")
     data = df[df['Status'] == 'Pending-customer confirm']
     my_dict = data.to_dict(orient = 'records')
 
