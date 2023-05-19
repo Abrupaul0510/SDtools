@@ -111,7 +111,7 @@ def hourlymain():
     df = pd.read_excel(rawdata, sheet_name="2023 Ticket Tracker")
 
     print(df)
-    dataall = df['Case No.'].notnull().sum()
+    dataall = df['CaseNo.'].notnull().sum()
 
     print(dataall)
     data = df[df['Status'] == 'Second-line handle']
@@ -130,7 +130,7 @@ def hourlymain():
 
 
     #Extracting only ticket number with SL status
-    tixnum_ar = [d['Case No.'].strip() for d in my_dict]
+    tixnum_ar = [d['CaseNo.'].strip() for d in my_dict]
     print("Checking status in OFM...")
     dataobj=[]
     for tixnum in tixnum_ar:
