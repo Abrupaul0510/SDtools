@@ -2,3 +2,4 @@
 *.json
 config.py
 *.xlsx
+check.py
