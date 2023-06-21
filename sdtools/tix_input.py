@@ -7,13 +7,16 @@ from requestcalls.getdata import get_task_order,get_tix_details,getmore_details_
 gsheet_path = config.gsheet_token_path
 
 
-
+cfile = gsheet_path
+scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
+creds = ServiceAccountCredentials.from_json_keyfile_name(cfile, scope)
+client = gspread.authorize(creds)
+sheet = client.open('dutypol').get_worksheet(1)
 
 
 def addtix(tix):
 
     now = datetime.datetime.now()
-    formatted_date = now.strftime("%d-%b-%y")
     res = get_tix_details(tix)
     tixarray = res['resultData']["rows"]
 
@@ -31,18 +34,6 @@ def addtix(tix):
 
 
 
-            reporter,tixtitle,flevel,subdomain,domain,tixdescription = getmore_details(recordID)
-
-            cfile = gsheet_path
-            scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
-            creds = ServiceAccountCredentials.from_json_keyfile_name(cfile, scope)
-            client = gspread.authorize(creds)
-
-
-            sheet = client.open('dutypol').get_worksheet(1)
-            sheet2 = client.open('dutypol').get_worksheet(2)
-                     
-
             columnval = sheet.col_values(1)
             
             checker = False
@@ -53,6 +44,7 @@ def addtix(tix):
                     checker = True
             
             if checker == True:
+                reporter,tixtitle,flevel,subdomain,domain,tixdescription = getmore_details(recordID)
                 new_row = [tix,
                             '',
                             '', 
@@ -74,27 +66,12 @@ def addtix(tix):
                             tixdescription,
                             '',
                             '']
-
-                new_exist = [tix,
-                            'OFM Ticket Handling',
-                            formatted_date,
-                            '',
-                            '',
-                            '',
-                            tixtitle,
-                            '']
-                
-
                 sheet.append_row(new_row)
-                sheet2.append_row(new_exist)
+
                 
 
 
-            
-            
-                
-
-
+    
 
 def getmore_details(recordID):
 
@@ -111,22 +88,22 @@ def getmore_details(recordID):
 
     for items in detailspol:
         if items['eleCode'] == "eventDescription" or items['eleCode'] == "appleDesc":
-            tixdescription += items['eleValue']
+            tixdescription = items['eleValue']
 
         if items['eleCode'] == "subordinateToTheSystemDomain" or items['eleCode'] == "ownSystemDomain":
-            domain += items['eleValue']
+            domain = items['eleValue']
 
         if items['eleCode'] == "subordinateToTheSystem" or items['eleCode'] == "PTO_OSS_EXTERNAL_SYSTEM":
-            subdomain += items['eleValueName']
+            subdomain = items['eleValueName']
 
         if items['eleCode'] == "eventProcessingTimeMinutes" or items['eleCode'] == "responseValue":
-            flevel += items['eleValue']
+            flevel = items['eleValue']
 
         if items['eleCode'] == "eventTitle" or items['eleCode'] == "orderTitle":
-            tixtitle += items['eleValue']
+            tixtitle = items['eleValue']
 
         if items['eleCode'] == "requesterName" or items['eleCode'] == "applyName":
-            reporter += items['eleValue']
+            reporter = items['eleValue']
     
     return reporter,tixtitle,flevel,subdomain,domain,tixdescription
 

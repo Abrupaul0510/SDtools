@@ -241,10 +241,6 @@ def getallworkorder():
                 'sdName': 'Claveria, Julius'
             },
             {
-                'sdID': '21007',
-                'sdName': 'Malinao, Rhenz'
-            },
-            {
                 'sdID': '3309335',
                 'sdName': 'Castillo, Timothy'
             },
@@ -282,15 +278,19 @@ def getallworkorder():
             },
             {
                 'sdID': '21027',
-                'sdName': 'Mojica Van Angelo'
+                'sdName': 'Mojica, Van Angelo'
             },
             {
                 'sdID': '23013',
-                'sdName': 'Villahermosa Reyn'
+                'sdName': 'Villahermosa, Reyn'
             },
             {
                 'sdID': '3324205',
-                'sdName': 'Steven Piolo Buenaventura'
+                'sdName': 'Buenaventura, Steven Piolo'
+            },
+            {
+                'sdID': '24012',
+                'sdName': 'Libaresos, James Kenneth'
             }
             ]
     
@@ -316,7 +316,7 @@ def getallworkorder():
         print("Data Extracted, Please check root folder.")
 
     except ValueError:
-        print("Please follow the date format Example: 2023-05-16")
+        print("Please follow the date format Example: 05/20/2023")
 
 
 

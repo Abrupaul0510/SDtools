@@ -99,6 +99,8 @@ def handledtix():
                                             actiontaken = "Return to reporter for confirmation/action "+nexttaskdata['partyName']
                                         elif nexttaskdata['tacheName'] in suspend:
                                             actiontaken = "Ticket suspended"
+                                        else:
+                                            actiontaken = "Enter!"
 
                                         checkouttime = starttix[11:]
                                         if endtix is not None:
@@ -167,6 +169,8 @@ def handledtix():
                                             actiontaken = "Return to reporter for confirmation/action "+nexttaskdata['partyName']
                                         elif nexttaskdata['tacheName'] in suspend:
                                             actiontaken = "Ticket suspended"
+                                        else:
+                                            actiontaken = "Enter!"
 
 
                                         checkouttime = starttix[11:]
